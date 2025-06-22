@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { SessionProvider } from "next-auth/react";
+import Navbar from "@/components/navbar";
+import { ThemeProvider } from "next-themes";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -23,11 +26,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+   
+        <SessionProvider>
+          <ThemeProvider attribute={'class'} enableSystem defaultTheme="system">   {/**here in this code enable system checks the theme of the system and default theme="system" means the theme will be of system or windows or macs */}
+             <div className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0] transition-colors duration-300">
+
+                <Navbar/>
         {children}
+        </div>
+        </ThemeProvider>
+        
+       
+        </SessionProvider>
       </body>
     </html>
   );
