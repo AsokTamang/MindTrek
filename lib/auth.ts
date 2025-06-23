@@ -3,7 +3,7 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter"
 import NextAuth from "next-auth"
 import GitHub from "next-auth/providers/github"
  
-export const authOptions = NextAuth({
+export const {handlers,signIn,signOut,auth} = NextAuth({
   adapter:MongoDBAdapter(client),
   providers: [GitHub({
     clientId:process.env.AUTH_GITHUB_ID!,
@@ -16,7 +16,7 @@ export const authOptions = NextAuth({
     async jwt({token,user}){
       if(user){
         token.id=user.id  ;
-        token.username=user.name;
+        token.name=user.name;
       }
       return token;
     } ,
@@ -24,7 +24,7 @@ export const authOptions = NextAuth({
     async session({session,token}){
       if(token){
         session.user.id=token.id as string;
-        session.user.username=token.username as string;
+        session.user.name=token.name as string;
       }
       return session;
     }

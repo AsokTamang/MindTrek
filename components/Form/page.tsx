@@ -61,7 +61,7 @@ export default function Form() {
           id="mood"
           value={mood}
           onChange={(e) => setMood(e.target.value)}
-          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0]  w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         >
           <option value="" disabled>Select your mood</option>
@@ -82,7 +82,7 @@ export default function Form() {
           id="scale"
           value={scale ?? ""}
           onChange={(e) => setScale(Number(e.target.value))} // Here we are setting the type as Number
-          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0] w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         >
           <option value="" disabled>Select the scale</option>
@@ -101,7 +101,7 @@ export default function Form() {
           id="feeling"
           value={feeling}
           onChange={(e) => setFeeling(e.target.value)}
-          className="w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0] w-full border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           required
         >
           <option value="" disabled>Select your feeling</option>
@@ -123,7 +123,7 @@ export default function Form() {
           id="journal"
           value={journal}
           onChange={(e) => setJournal(e.target.value)}
-          className="w-full h-32 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0] w-full h-32 border border-gray-300 rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
           placeholder="Write your thoughts here..." 
           typeof="text"
           required

@@ -19,6 +19,8 @@ const moodSchema=new mongoose.Schema({
     journal:{
         type:String
     }
+},{
+    timestamps:true
 })
 
 export const moodModal=mongoose.models.Mood||mongoose.model('Mood',moodSchema);
