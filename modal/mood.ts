@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
+
 const moodSchema=new mongoose.Schema({
+    id:{
+        type:String,
+        unique:true,
+    },
     user:{
       type:mongoose.Schema.Types.ObjectId,
       ref:'User'    //here the user of this mood entered is our user of the mongodb so we use the type of mongoose.schema.types.objectid

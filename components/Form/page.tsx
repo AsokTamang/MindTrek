@@ -131,7 +131,7 @@ export default function Form() {
       </div>
 
       <Button type="submit"   className="w-full bg-white text-black dark:bg-black dark:text-white font-medium">
-        Submit
+        {success?'submitting':'submit'}
       </Button>
     </form>
 
