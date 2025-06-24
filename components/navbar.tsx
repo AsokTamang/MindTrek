@@ -26,6 +26,13 @@ export default function Navbar() {
           </Button>
         ) : (
           <>
+            <select className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0]" onChange={(e)=>router.push(`/${e.target.value}`)}>
+              <option disabled>History</option>
+              <option value={'seven'}>Past seven days</option>
+              <option  value={'month'}>Past month</option>
+              <option  value={'twenty'}>Past twenty days</option>
+
+            </select>
             <Button
               onClick={() => router.push("/dashboard")}
                className=" bg-white text-black dark:bg-black dark:text-white font-medium"

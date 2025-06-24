@@ -24,6 +24,8 @@ export default function Result() {
       >
         See your graph
       </Button>
+    
+
     </div>
   );
 }
