@@ -9,37 +9,34 @@ export async function POST(req: NextRequest) {
   await client.connect(); //here we are connecting using the instance of mongo client that we created in the file db.ts
 
   const data = await req.json(); //then we convert the requested body into json format.
-  const { mood, scale, feeling, journal } = data;
+  const { moodData} = data;
 
   try {
-    const db = client.db("mindtrek"); //here we are creating a database using mongoclient.
-    const collection = db.collection("moods"); //then we are creating a collection named moods.
-    await collection.insertOne({
-      userid: session?.user.id,
-      mood: mood,
-      scale: scale,
-      feeling: feeling,
-      journal: journal,
-      createdAt: new Date(),
-    });
+   
 
     const together = new Together({
       apiKey: process.env.TOGETHER_API_KEY,
     });
-    const prompt = `You are a mental health expert.
-Based on the following emotional data, provide a short, warm, encouraging message — no explanations, no disclaimers, just a direct response that feels like a relief to the user.
+   const prompt = `
+You are a world-class mental health coach and emotional fitness strategist.
 
-Mood: ${mood}
+Based on the following emotional data from the past week, create a highly actionable list of goals and planning strategies that can improve the user's mood, build emotional resilience, and support long-term mental wellness.
 
-Emotion Scale (1–5): ${scale}
+**Guidelines:**
+- Format your response using **clear bullet points or numbered steps**
+- Each goal must include:
+  - **Action** (what to do, clearly stated)
+  - **Purpose** (why it works — brief and evidence-based)
+  - **Timing or Frequency** (when or how often to apply it)
+- Avoid fluff, disclaimers, or generic advice
+- Keep the tone professional, direct, and motivating — like a personal coach who believes in the user's growth
 
-Feeling Tag: ${feeling}
+**Emotional Data (Past Week):**
+${moodData.join(', ')}
 
-Journal Entry: ${journal}
+Respond with at least 5 concise, personalized goals. Finish with 1 optional bonus tip or motivational nudge.
+`;
 
-Respond in 2–4 sincere sentences that offer comfort and gentle support. Do not include AI disclaimers or introductions.
-    
-    `;
     const completion = await together.chat.completions.create({
       //after creating the prompt we are creating a chat with the openai modal of version 4 with messages for chat system
       model: "deepseek-ai/DeepSeek-V3",

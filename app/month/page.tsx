@@ -23,6 +23,7 @@ interface moodType {
 
 export default function Month() {
   const [result, setResult] = React.useState<moodType[]>([]); //inorder to prevent the further typescript errors we must declare the type first.
+
   React.useEffect(() => {
     const fetchData = async () => {
       try {
@@ -47,20 +48,18 @@ export default function Month() {
   }, []);
 
   return (
-  <div style={{ width: "100%", height: "100vh", padding: "8rem",marginLeft:'5rem' }}>
-      <h2 style={{ fontSize: "1.5rem", marginBottom: "1rem" }}>Chart Test</h2>
+    <div className="min-h-screen w-full px-6 py-14 flex flex-col items-center gap-8 bg-gradient-to-b from-[#f3f4f6] via-white to-[#fef7f0] dark:from-[#111827] dark:via-black dark:to-[#1f1f1f] transition-colors duration-300">
+      <h2 className="text-3xl font-semibold tracking-tight text-gray-900 dark:text-white">
+        Mood Chart – Past Month
+      </h2>
+
       {result.length > 0 ? (
-        <div className="flex flex-col gap-0">
-          <div className="w-full max-w-4xl shadow-lg rounded-2xl  border border-gray-300 dark:border-gray-700">
-            <ResponsiveContainer width="100%" height={300}>
+        <div className="w-full max-w-5xl">
+          <div className="shadow-lg rounded-2xl border border-gray-300 dark:border-gray-700 bg-white dark:bg-[#1a1a1a] p-4">
+            <ResponsiveContainer width="100%" height={320}>
               <LineChart
                 data={result}
-                margin={{
-                  top: 20,
-                  right: 30,
-                  left: 0,
-                  bottom: 5,
-                }}
+                margin={{ top: 20, right: 30, left: 0, bottom: 5 }}
               >
                 <CartesianGrid strokeDasharray="3 3" />
                 <XAxis
@@ -74,8 +73,8 @@ export default function Month() {
                 <Legend />
                 <Line
                   type="monotone"
-                  dataKey="scale" /* and the line depends upon the value of scale*/
-                  stroke="#8884d8"
+                  dataKey="scale" // and the line depends upon the value of scale
+                  stroke="#6366f1"
                   strokeWidth={2}
                   activeDot={{ r: 6 }}
                 />
@@ -84,7 +83,7 @@ export default function Month() {
           </div>
         </div>
       ) : (
-        <div className="text-lg font-medium animate-pulse">
+        <div className="text-lg font-medium text-gray-500 dark:text-gray-300 animate-pulse">
           Loading chart...
         </div>
       )}

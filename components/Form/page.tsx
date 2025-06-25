@@ -111,6 +111,8 @@ export default function Form() {
           <option value="BurnOut">BurnOut</option>
           <option value="Stuck">Stuck</option>
           <option value="Overthinking">Overthinking</option>
+          <option value="happy">Happy</option>
+          <option value="joyful">Joyful</option>
         </select>
       </div>
 
