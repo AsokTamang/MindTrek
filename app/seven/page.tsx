@@ -33,7 +33,7 @@ export default function Seven() {
           console.log("fetched data is :", data);
           const formattedData = data.map((item: any) => ({
             ...item,
-            createdAt: new Date(item.createdAt).toLocaleString(), // instead of using localedatestring we are using localeString because it includes time to distinguish entries clearly for the line chart
+            createdAt: new Date(item.createdAt).toLocaleDateString(), // instead of using localedatestring we are using localeString because it includes time to distinguish entries clearly for the line chart
           }));
           setResult(formattedData);
         }

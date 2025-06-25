@@ -2,6 +2,8 @@
 import React from "react";
 import axios from "axios";
 import { marked } from "marked";
+import Clinics from "../../app/clinics/page";
+import Link from "next/link";
 
 interface props {
   moodData: string[];
@@ -49,6 +51,10 @@ export default function Goals({ moodData }: props) {
             className="prose prose-lg dark:prose-invert max-w-none text-left"
             dangerouslySetInnerHTML={{ __html: marked.parse(goals) }}
           />
+          <div>
+           <Link className="hover:text-emerald-500" href={'/clinics'}><h1>Need professional help? Visit trusted mental health professionals </h1></Link> 
+
+          </div>
         </div>
       ) : (
         <div className="flex justify-center items-center h-screen text-xl text-gray-600 dark:text-gray-300">
