@@ -4,6 +4,8 @@ import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import Navbar from "@/components/navbar";
 import { ThemeProvider } from "next-themes";
+import Cloudinit from "@/components/cloudminit/page";
+import Notification from "@/components/notification/page";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -34,7 +36,8 @@ export default function RootLayout({
         <SessionProvider>
           <ThemeProvider attribute={'class'} enableSystem defaultTheme="system">   {/**here in this code enable system checks the theme of the system and default theme="system" means the theme will be of system or windows or macs */}
              <div className="bg-[#fdf6f0] text-[#222222] dark:bg-[#1c1c1c] dark:text-[#e0e0e0] transition-colors duration-300">
-
+                <Cloudinit/>
+                <Notification/>
                 <Navbar/>
         {children}
         </div>
