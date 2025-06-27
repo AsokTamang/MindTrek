@@ -1,16 +1,28 @@
-//this code handles the background messaging when the user is inactive or the app is not opened.
+importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js');
+importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js');
 
-import { getMessaging } from "firebase/messaging/sw";
-import { onBackgroundMessage } from "firebase/messaging/sw";
+// Initialize the Firebase app in the service worker by passing the generated config
+var firebaseConfig = {
+  apiKey: "AIzaSyBNG3DCmaP1o6U4F2EqhJcKv3NHg-GfUYY",
+  authDomain: "mindtrek-c0150.firebaseapp.com",
+  projectId: "mindtrek-c0150",
+  storageBucket: "mindtrek-c0150.firebasestorage.app",
+  messagingSenderId: "1009212621539",
+  appId: "1:1009212621539:web:dcfff4cd180e66109d3bd6",
+  measurementId: "G-XKV9FVE1WP",
+};
 
-const messaging = getMessaging();
-onBackgroundMessage(messaging, (payload) => {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'Login reminder';
+firebase.initializeApp(firebaseConfig);
+
+// Retrieve firebase messaging
+const messaging = firebase.messaging();
+
+messaging.onBackgroundMessage(function(payload) {
+  console.log('Received background message ', payload);
+
+  const notificationTitle = payload.notification.title;
   const notificationOptions = {
-    body: 'Login your mood',
-   
+    body: payload.notification.body,
   };
 
   self.registration.showNotification(notificationTitle,

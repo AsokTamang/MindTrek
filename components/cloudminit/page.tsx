@@ -1,3 +1,4 @@
+//this file contains the logic of registering our firebase-messaging-sw.js in our nextjs app  which handles the background message sending logic
 "use client"
 import React from "react"
 export default function Cloudinit(){
