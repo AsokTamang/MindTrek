@@ -30,7 +30,7 @@ export default function Twenty() {
         const { success, data, message } = res.data;
         if (success) {
           console.log("fetched data is :", data);
-          const formattedData = data.map((item: any) => ({
+          const formattedData = data.map((item: moodType) => ({
             ...item,
             createdAt: new Date(item.createdAt).toLocaleDateString(),
           })); //here we are converting the createdAt of each data into localedatestring.

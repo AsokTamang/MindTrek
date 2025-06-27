@@ -15,7 +15,7 @@ export default function Themetoggle(){
     },[])
     if(!mounted) return
     return(
-        <Button size={'icon'} variant={'outline'} className='rounded-full' onClick={(e)=> theme==='dark'?setTheme('light'):setTheme('dark')}>
+        <Button size={'icon'} variant={'outline'} className='rounded-full' onClick={()=> theme==='dark'?setTheme('light'):setTheme('dark')}>
          {theme==="dark"?<MdOutlineWbSunny className='absolute h-10 w-10 scale-0 rotate-90 dark:rotate-0 dark:scale-100'/>:  <IoIosMoon className='absolute h-10 w-10 scale-100 rotate-0 dark:scale-0 dark:rotate-90'/>
 
 }

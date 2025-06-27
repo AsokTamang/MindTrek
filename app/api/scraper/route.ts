@@ -2,7 +2,7 @@ import * as cheerio from 'cheerio';
 import axios from 'axios';
 import { NextResponse } from "next/server";
 interface item{
-    image:any;
+    image:string;
     name:string;
     address:string;
     website:string;
@@ -16,7 +16,7 @@ export async function GET() {
     const Therapist=<item[]>[];
     try {
         therapist('.doctor-container').each((_,elem)=>{   //here doctor-container is the class of a card container of a doctor so we use each on this class container
-            const image=therapist(elem).find('.search-item-image').attr('src');   //here we are scraping the image by classname and through attribute of src to get the image src
+            const image=therapist(elem).find('.search-item-image').attr('src')!;   //here we are scraping the image by classname and through attribute of src to get the image src
             const name= therapist(elem).find('.search-item-doctor-name').text().trim();   //then we also find name,address,and website using the class
             const address=therapist(elem).find('.doctor-address').text().trim();
             const website='https://www.ratemds.com/best-doctors/on/toronto/therapist';

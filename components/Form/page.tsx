@@ -14,7 +14,7 @@ export default function Form() {
   const [feeling, setFeeling] = React.useState("");
   const [journal, setJournal] = React.useState("");
   const [success,setSuccess]=React.useState(false);
-  const [final,setFinal]=React.useState<string>('');
+ 
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -34,7 +34,7 @@ export default function Form() {
     const { success, data } =await res.data;
     if(success){
       setSuccess(true);
-      setFinal(data);
+     
       router.push(`/result?data=${data}`)
    
     }

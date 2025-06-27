@@ -2,7 +2,6 @@
 import React from "react";
 import axios from "axios";
 import { marked } from "marked";
-import Clinics from "../../app/clinics/page";
 import Link from "next/link";
 
 interface props {
@@ -37,7 +36,7 @@ export default function Goals({ moodData }: props) {
       }
     };
     fetchGoals(); //the bug was here as i called fetchGoals inside the fetchGoals which is pretty funny
-  }, []); //we used moodData here cause at first when this page loads moodData isnot fetched completely
+  }, [moodData]); //we used moodData here cause at first when this page loads moodData isnot fetched completely
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-b from-blue-50 via-white to-pink-50 dark:from-neutral-900 dark:via-black dark:to-neutral-800 transition-colors duration-300">

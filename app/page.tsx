@@ -6,9 +6,10 @@ import { app } from "../lib/firebase";
 
 
 const Page = () => {
-  let unsubscribe:(()=>void);   //here we are making the unsubscribe a variable not a constant so that we can use it inside .then of import  as well as outside .then
+   
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => {
+    let unsubscribe:(()=>void);    //here we are making the unsubscribe a variable not a constant so that we can use it inside .then of import  as well as outside .then
     setMounted(true);
     import("firebase/messaging").then(({ getMessaging, onMessage }) => {   //here we must include the import of {getMessaging, onMessage} from firebase/messaging inside the useEffect inorder to prevent the ssr bug cause these imports only work on the client side
       const messaging = getMessaging(app as FirebaseApp);

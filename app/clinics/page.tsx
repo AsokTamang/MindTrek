@@ -4,7 +4,7 @@ import Link from "next/link";
 import React from "react";
 
 interface collectionType {
-  image: string | any;
+  image: string ;
   name: string;
   address: string;
   website: string;
@@ -39,7 +39,7 @@ export default function Clinics() {
               className=" rounded-2xl shadow-md p-4 flex flex-col items-center space-y-4 transition hover:shadow-lg"
             >
               <img
-                src={item.image}
+                src={item.image!}
                 alt={item.name}
                 className="h-32 w-32 object-cover rounded-md border"
               />

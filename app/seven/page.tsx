@@ -31,7 +31,7 @@ export default function Seven() {
         const { success, data, message } = res.data;
         if (success) {
           console.log("fetched data is :", data);
-          const formattedData = data.map((item: any) => ({
+          const formattedData = data.map((item: moodType) => ({
             ...item,
             createdAt: new Date(item.createdAt).toLocaleDateString(), // instead of using localedatestring we are using localeString because it includes time to distinguish entries clearly for the line chart
           }));

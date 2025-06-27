@@ -1,4 +1,4 @@
-import { moodModal } from "@/modal/mood";
+
 import { auth } from "@/lib/auth";
 import { NextResponse } from "next/server";
 import client from "@/lib/db";

@@ -1,8 +1,15 @@
 import React from "react";
 import axios from "axios";
 
-export default function Suggestion({ data }: any) {
-  const [input, setInput] = React.useState([]); // here we are storing an array of feelings of a user into input state
+
+interface propsType {
+  data:string[]      //here we are declaring that the data is an array consisting of strings
+}
+
+
+
+export default function Suggestion({ data }: propsType) {
+  const [input, setInput] = React.useState<string[]>([]); // here we are storing an array of feelings of a user into input state
   const [success, setSuccess] = React.useState(false); // this state tracks if the suggestion was successfully received
   const [suggestion, setSuggestion] = React.useState(""); // this stores the AI's suggested response
 
@@ -21,7 +28,7 @@ export default function Suggestion({ data }: any) {
           }
         );
 
-        const { success, data: responseData, message } = res.data;
+        const { success, data: responseData } = res.data;
 
         if (success) {
           setSuccess(true);
@@ -35,7 +42,7 @@ export default function Suggestion({ data }: any) {
     };
 
     getSuggestion();
-  }, [data]); // we are using data as the dependency array because only when the data (i.e., the set of feelings) is passed into this page, we run the logic inside useEffect
+  }, [data,input]); // we are using data as the dependency array because only when the data (i.e., the set of feelings) is passed into this page, we run the logic inside useEffect
 
   return (
     <div className="min-h-[60vh] w-full flex flex-col items-center justify-center px-6 py-14 text-center space-y-6">

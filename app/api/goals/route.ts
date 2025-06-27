@@ -1,10 +1,10 @@
 import client from "@/lib/db";
 import { NextRequest, NextResponse } from "next/server";
 import Together from "together-ai";
-import { auth } from "@/lib/auth";
+
 
 export async function POST(req: NextRequest) {
-  const session = await auth(); //here we are extracting the signed in user's info using helper function called auth.
+ 
 
   await client.connect(); //here we are connecting using the instance of mongo client that we created in the file db.ts
 

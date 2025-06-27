@@ -8,7 +8,7 @@ import Themetoggle from "./themetoggle";
 
 export default function Navbar() {
   const router = useRouter();
-  const { data, status } = useSession();
+  const { status } = useSession();
 
   return (
     <nav className="w-full px-6 py-4 flex items-center justify-between shadow-md bg-white dark:bg-black transition-colors duration-300">
