@@ -46,10 +46,11 @@ export default function Goals({ moodData }: props) {
             Goals and Plans Designed for You
           </h1>
 
-          <div
-            className="prose prose-lg dark:prose-invert max-w-none text-left"
-            dangerouslySetInnerHTML={{ __html: marked.parse(goals) }}
-          />
+         <div
+  className="prose prose-lg dark:prose-invert max-w-none text-left font-serif leading-relaxed tracking-wide text-gray-800 dark:text-gray-100"
+  dangerouslySetInnerHTML={{ __html: marked.parse(goals) }}
+/>
+
           <div>
            <Link className="hover:text-emerald-500" href={'/clinics'}><h1>Need professional help? Visit trusted mental health professionals </h1></Link> 
 
