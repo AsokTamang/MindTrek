@@ -1,3 +1,4 @@
+//this is the endpoint from where we store the token passed from firebase as well as we send the notification using admin sdk
 import { NextRequest, NextResponse } from "next/server";
 import client from "@/lib/db";
 import { auth } from "@/lib/auth";
@@ -7,7 +8,7 @@ import { getMessaging } from "firebase-admin/messaging";
 export async function POST(req: NextRequest) {
   try {
     let app;
-    if (!getApps.length) {  //here we are checking if the apps are already initialized or not , only ifnot then we initialize our app otherwise we retrieve the already initialized app.
+    if (getApps().length===0) {  //here we are checking if the apps are already initialized or not , only ifnot then we initialize our app otherwise we retrieve the already initialized app.
        app = initializeApp({
       credential: cert({
         //here we are initializing our firebase admin sdk app using credential with cert having prjectid,cleintemail and privatekey
@@ -28,7 +29,7 @@ export async function POST(req: NextRequest) {
 
     const data = await req.json();
     const { token } = data; //then we are extracting the token passed into our backend
-    if (token) {
+    if (token) {      //if the token do exists then we send the notification to our client or users
       const message = {
         notification: {
           title: "Login Reminder",

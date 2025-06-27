@@ -1,6 +1,8 @@
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js');
 importScripts('https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js');
 
+let app;
+
 // Initialize the Firebase app in the service worker by passing the generated config
 var firebaseConfig = {
   apiKey: "AIzaSyBNG3DCmaP1o6U4F2EqhJcKv3NHg-GfUYY",
@@ -11,6 +13,7 @@ var firebaseConfig = {
   appId: "1:1009212621539:web:dcfff4cd180e66109d3bd6",
   measurementId: "G-XKV9FVE1WP",
 };
+
 
 firebase.initializeApp(firebaseConfig);
 

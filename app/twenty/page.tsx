@@ -32,7 +32,7 @@ export default function Twenty() {
           console.log("fetched data is :", data);
           const formattedData = data.map((item: any) => ({
             ...item,
-            createdAt: new Date(item.createdAt).toLocaleString(),
+            createdAt: new Date(item.createdAt).toLocaleDateString(),
           })); //here we are converting the createdAt of each data into localedatestring.
           setResult(formattedData);
           return;

@@ -4,24 +4,32 @@ import type { FirebaseApp } from "firebase/app";
 import { ToastContainer, toast } from "react-toastify";
 import { app } from "../lib/firebase";
 
+
 const Page = () => {
+  let unsubscribe:(()=>void);   //here we are making the unsubscribe a variable not a constant so that we can use it inside .then of import  as well as outside .then
   const [mounted, setMounted] = React.useState(false);
   React.useEffect(() => {
     setMounted(true);
     import("firebase/messaging").then(({ getMessaging, onMessage }) => {   //here we must include the import of {getMessaging, onMessage} from firebase/messaging inside the useEffect inorder to prevent the ssr bug cause these imports only work on the client side
       const messaging = getMessaging(app as FirebaseApp);
-      const unsubscribe = onMessage(messaging, (payload) => {
+       unsubscribe = onMessage(messaging, (payload) => {
         //this part will show the notification when the app is opened.
         console.log("Message received. ", payload);
 
-        toast(`${payload.notification?.title}
-           ${payload.notification?.body}`);
+        toast(
+          <div className="p-3">
+            <h1 className="font-semibold">{payload.notification?.title}</h1>
+            <p>{payload.notification?.body}</p>
+          </div>
+        );
       });
 
-      return () => {
-        unsubscribe();
-      };
+    
     });
+      return () => {
+        if(unsubscribe){
+        unsubscribe();}
+      };
   }, []);
   if (!mounted) return null;
 

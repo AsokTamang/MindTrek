@@ -5,7 +5,8 @@ interface item{
     image:any;
     name:string;
     address:string;
-    website:string;}
+    website:string;
+}
 
 export async function GET() {
     const unique=new Set();

@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { getToken } from "firebase/messaging";
-import messaging from "../../lib/firebase";
+
+
 import axios from "axios";
 
 export default function Passtoken() {
@@ -14,6 +14,10 @@ export default function Passtoken() {
           //if the permission is not granted then we wont pass the token in out backend server.
           return;
         }
+        const {app} = await import('../../lib/firebase');    //same here as this app instance can only be imported inside the client component 
+        const { getMessaging, getToken }=await import ("firebase/messaging");   //we are importing the getMessaging as well as gettoken from firebase/messaging inside the useeffect cuase this funcitons of firebase only runs inside the clientside
+        const messaging = getMessaging(app); //here we are initializing the firebase cloud messaging.
+
 
         const token = await getToken(messaging, {
           //here we are extracting the token from firebase
